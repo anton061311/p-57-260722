@@ -15,12 +15,15 @@ public class Rq {
     public String getParam(String inputKey, String inputValue) {
         String[] commandTokens = command.split("\\?");
         String queryString = commandTokens[1];
+        String[] queryTokens = queryString.split("&");
 
-        String[] paramTokens = queryString.split("=");
-        String key = paramTokens[0];
-        String value = paramTokens[1];
+        for (String param : queryTokens){
+            String[] paramTokens = param.split("=");
+            String key = paramTokens[0];
+            String value = paramTokens[1];
 
-        if(inputKey.equals(key)) return value;
+            if(inputKey.equals(key)) return value;
+        }
 
         return inputValue;
     }
