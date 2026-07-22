@@ -1,5 +1,10 @@
 package com.back;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class Rq {
      private final String command;
 
@@ -13,18 +18,22 @@ public class Rq {
 
 
     public String getParam(String inputKey, String inputValue) {
+
+        Map<String, String> paramMap = new HashMap<>();
+
         String[] commandTokens = command.split("\\?");
         String queryString = commandTokens[1];
         String[] queryTokens = queryString.split("&");
 
-        for (String param : queryTokens){
-            String[] paramTokens = param.split("=");
-            String key = paramTokens[0];
-            String value = paramTokens[1];
+        paramMap = Arrays.stream(queryTokens)
+                .map(param -> param.split("="))
+                .collect(
+                        Collectors.toMap(
+                                tokens -> tokens[0],
+                                tokens -> tokens[1]
+                        )
+                );
 
-            if(inputKey.equals(key)) return value;
-        }
-
-        return inputValue;
+        return paramMap.getOrDefault(inputKey, inputValue);
     }
 }

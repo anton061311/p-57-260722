@@ -83,7 +83,6 @@ public class RqTest {
         assertThat(paramValue).isEqualTo("홍길동");
     }
 
-    /*
     @Test
     @DisplayName("입력값 : \"등록?고향=서울&이름=홍길동&성별=남자\" : getParam(\"이름\"): 홍길동")
     void t8() {
@@ -106,6 +105,7 @@ public class RqTest {
         assertThat(paramValue).isEqualTo("남자");
     }
 
+    /*
     @Test
     @DisplayName("입력값 : \"목록?page=1\" : getParam(\"page\"): 1")
     void t10() {
