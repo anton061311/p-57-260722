@@ -10,7 +10,18 @@ public class Rq {
     public String getActionName() {
         return command.split("\\?")[0];
     }
-    public String getParam(String key, String value) {
-        return "홍길동";
+
+
+    public String getParam(String inputKey, String inputValue) {
+        String[] commandTokens = command.split("\\?");
+        String queryString = commandTokens[1];
+
+        String[] paramTokens = queryString.split("=");
+        String key = paramTokens[0];
+        String value = paramTokens[1];
+
+        if(inputKey.equals(key)) return value;
+
+        return inputValue;
     }
 }
