@@ -36,4 +36,16 @@ public class Rq {
 
         return paramMap.getOrDefault(inputKey, inputValue);
     }
+
+    public int getParamAsInt(String inputKey, int inputValue){
+        return inputValue;
+
+//        String value = getParam(key, "");
+//
+//        if(value.isBlank()) {
+//            return inputValue;
+//        }
+//
+//        return Integer.parseInt(value);
+    }
 }
